@@ -2,38 +2,140 @@
 
 *{
     overflow: hidden;
+    margin: 0;
+    padding: 0;
+    
 }
 
-.logoFrame{
+/*child elemente werden sind als row angelegt.
+
+space-between sorgt dafür, dass der gesamte
+zur Verfügung stehende Platz zwischen den
+Elementen liegt*/
+.logoFrame
+{
     width: 1920px;
     height: 100px;
     border: 2px solid white;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .logoFrame img
 {
     left: 0px;
     right: 0px;
+    height: 100px;
 }
 
-.weatherInfoFrame{
-    width: 1920px;
-    height: 350px;
-    border: 2px solid white;
+.date-container
+{
+    margin-right: 5px;
+    font-size: 40px;
+    font-weight: 100;
+    text-align: end;
 }
 
-.weatherInfoFrame img
+.weatherInfoFrame
 {
     position: relative;
-    bottom: 400px;
-    width: 100%;
-    height: auto;
+    width: 1920px;
+    height: 500px;
+    margin: auto;
+}
+
+/*Pseudo Element um die opacity anwenden zu können*/
+.weatherInfoFrame::before
+{
+    content: "";
+    background-image: url('HAWK_von_oben.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    bottom: 0px;
+    left: 0px;
     opacity: 0.5;
 }
 
-.busInfoFrame{
+.weatherInfoFrame .container
+{
+    position: relative;
+    padding: 150px 50px;
+    align-items: center;
+    color: white;
+}
+
+.weatherInfoFrame .future-forecast
+{
+    background: rgba(24,24,27,0.8);
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.future-forecast .today
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.future-forecast .today .day
+{
+    padding: 5px 15px;
+    background: #3c3c44;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.future-forecast .today .temp
+{
+    font-size: 20px;
+    padding-top: 15px;
+}
+
+.future-forecast .weather-forecast
+{
+    display: flex;
+    font-size: 30px;
+}
+
+.weather-forecast .weather-forecast-item
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.weather-forecast .weather-forecast-item .day
+{
+    padding: 5px 15px;
+    background: #3c3c44;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.weather-forecast .weather-forecast-item .temp
+{
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.busInfoFrame
+{
     width: 1920px;
-    height: 410px;
+    height: 500px;
     border: 2px solid white;
 }
 
@@ -49,7 +151,7 @@
 .buslogo
 {
     position: absolute;
-    left: 7px;
+    left: 0px;
 }
 
 body{
