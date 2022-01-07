@@ -41,7 +41,7 @@ Elementen liegt*/
 
 .date-container
 {
-    margin-right: 5px;
+    margin-right: 30px;
     font-size: 40px;
     font-weight: 100;
     text-align: end;
@@ -73,33 +73,34 @@ Elementen liegt*/
 .weatherInfoFrame .container
 {
     position: relative;
-    padding: 115px 50px;
+    padding: 90px 50px;
     align-items: center;
     color: white;
 }
 
 .weatherInfoFrame .future-forecast
 {
-    background: rgba(131, 131, 131, 0.8);
+    background: rgba(99, 99, 99, 0.8);
     padding: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid #ec573f;
+    border: 3px solid #f77a67;
 }
 
 .future-forecast .today
 {
+    padding: 5px 200px;
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: center;
     font-size: 50px;
 }
 
 .future-forecast .today .day
 {
-    padding: 5px 15px;
-    background: #3c3c44;
+    padding: 5px 30px;
+    background: #414141;
     border-radius: 50px;
     text-align: center;
 }
@@ -108,11 +109,12 @@ Elementen liegt*/
 {
     font-size: 30px;
     padding-top: 15px;
+    text-align: center;
 }
 
 .future-forecast .weather-forecast
 {
-    display: flex;
+    display: contents;
     font-size: 40px;
 }
 
@@ -131,7 +133,6 @@ Elementen liegt*/
 .weather-forecast .weather-forecast-item .day
 {
     padding: 5px 15px;
-    background: #3c3c44;
     border-radius: 50px;
     text-align: center;
 }
