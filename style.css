@@ -114,7 +114,7 @@ Elementen liegt*/
 
 .future-forecast .weather-forecast
 {
-    display: contents;
+    display: flex;
     font-size: 40px;
 }
 
