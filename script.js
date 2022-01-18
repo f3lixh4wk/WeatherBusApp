@@ -2,7 +2,6 @@ const timeElement = document.getElementById('time');
 const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
 const dateElement = document.getElementById('date');
-const currentWeatherItemsElement = document.getElementById('current-weather-items');
 const weatherForecastElement = document.getElementById('weather-forecast');
 const currentTempElement = document.getElementById('current-temp');
 
@@ -28,17 +27,13 @@ function setTime()
     dateElement.innerHTML = days[day] + ', ' + date + ' ' + months[month];
 }
 
-setInterval(setTime, 1000);
-setTime();
-
-getWeatherData()
 function getWeatherData()
 {
     navigator.geolocation.getCurrentPosition((success)=>{
 
         let{latitude, longitude} = success.coords;
 
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&lang={de}&appid=${API_KEY}`).then(res => res.json()).then(data =>{
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&lang=de&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res => res.json()).then(data =>{
 
             console.log(data)
             showWeatherData(data);
@@ -46,28 +41,28 @@ function getWeatherData()
     })
 }
 
-function showWeatherData(data){
-    let otherDayForcast = ''
-    data.daily.forEach((day,idx)=>{
-        if(idx == 0){
+function showWeatherData(data)
+{
+    let otherDayForcast = '';
+    data.daily.forEach((day,idx)=>
+    {
+        if(idx == 0)
+        {
             currentTempElement.innerHTML = `
-            <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" 
-            alt="weather-icon" class="w-icon">
+            <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather-icon" class="w-icon">
             <div class="other">
-                <div class="day">${window.moment(day.dt*1000).format('dddd')}</div>
-                <div class="temp">Tag - ${day.temp.day}&#176;C</div>
-                <div class="temp">Nacht - ${day.temp.night}&#176;C</div>
+                <div class="day">${window.moment(day).locale('de').format('dddd')}</div>
+                <div class="temp">${Math.round(day.temp.day)}&#176; / ${Math.round(day.temp.night)}&#176;</div>
             </div>
-            
             `
         }
-        else{
+        else
+        {
             otherDayForcast += `
             <div class="weather-forecast-item">
-                <div class="day">${window.moment(day.dt*1000).format('dddd')}</div>
+                <div class="day">${window.moment(day).locale('de').format('dddd')}</div>
                 <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather-icon" class="w-icon">
-                <div class="temp">Tag - ${day.temp.day}&#176;C</div>
-                <div class="temp">Nacht - ${day.temp.night}&#176;C</div>
+                <div class="temp">${Math.round(day.temp.day)}&#176; / ${Math.round(day.temp.night)}&#176;</div>
             </div>
             `
         }
@@ -75,3 +70,7 @@ function showWeatherData(data){
 
     weatherForecastElement.innerHTML = otherDayForcast;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------
+setInterval(setTime, 1000);
+setInterval(getWeatherData(), 180000);

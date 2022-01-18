@@ -47,11 +47,15 @@ Elementen liegt*/
     text-align: end;
 }
 
+/*----------------------------------------------------------------------------------------------------------------------*/
+/*                                                  Weather Info Frame                                                  */
+/*----------------------------------------------------------------------------------------------------------------------*/
+
 .weatherInfoFrame
 {
     position: relative;
     width: 1920px;
-    height: 500px;
+    height: 450px;
 }
 
 /*Pseudo Element um die opacity anwenden zu können*/
@@ -73,8 +77,7 @@ Elementen liegt*/
 .weatherInfoFrame .container
 {
     padding-top: 115px;
-    padding-left: 115px;
-    
+    padding-left: 138px;
     color: #fff;
 }
 
@@ -110,8 +113,7 @@ Elementen liegt*/
     padding: 5px 15px;
     background: #fc5a41f1;
     border-radius: 50px;
-    text-align: center;
-    
+    text-align: center;   
 }
 
 .future-forecast .today .temp
@@ -123,7 +125,6 @@ Elementen liegt*/
 .future-forecast .weather-forecast
 {
     display: flex;
-    
 }
 
 .weather-forecast .weather-forecast-item
@@ -151,24 +152,36 @@ Elementen liegt*/
 .weather-forecast .weather-forecast-item .temp
 {
     font-weight: 100;
-    font-size: 12px;
-    
+    font-size: 20px;
 }
+
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------*/
+/*                                                  Bus Info Frame                                                      */
+/*----------------------------------------------------------------------------------------------------------------------*/
 
 .busInfoFrame
 {
+    position: relative;
     width: 1920px;
-    height: 500px;
-    border: 2px solid white;
+    height: 550px;
 }
 
-.netzplan
+.busInfoFrame::before
 {
-    position: relative;
-    bottom: 90px;
-    width: 100%;
-    height: auto;
-    opacity: 0.4; 
+    content: "";
+    background-image: url('Bus-Netzplan.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
 }
 
 .buslogo
@@ -177,6 +190,56 @@ Elementen liegt*/
     left: 0px;
 }
 
-body{
+.busInfoFrame .container
+{
+    padding-top: 60px;
+    padding-left: 138px;
+    color: #fff;
+}
+
+.busInfoFrame .bus-container
+{
+    background: rgba(99, 99, 99, 0.8);
+    padding: 25px;
+    position: fixed;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.busInfoFrame .bus-container .bus-Item
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2)
+}
+
+.busInfoFrame .bus-container .bus-Item .bus
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2)
+}
+
+.busInfoFrame .bus-container .bus-Item .bus .line
+{
+    font-weight: 400;
+    font-size: 50px;
+}
+
+body
+{
     font-family: 'Fira Sans', sans-serif;
 }

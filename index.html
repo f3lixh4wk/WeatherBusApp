@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1920px, height=1080px, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <title>HAWK Wetter-Bus Infoseite</title>
 </head>
 <body>
@@ -17,8 +18,6 @@
                 <span id="minutes"></span>
             </div>
             <div class="date" id="date"></div>
-            <div class="others" id="current-weather-items">
-            </div>
         </div>
     </div>
     <div class="weatherInfoFrame">
@@ -34,7 +33,7 @@
                 </div>
                 <div class="weather-forecast" id="weather-forecast">
                     <div class="weather-forecast-item">
-                        <div class="day"></div>
+                        <div class="day">Dienstag</div>
                         <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon" class="w-icon">
                         <div class="temp">Tag - 20.4&#176;C</div>
                         <div class="temp">Nacht - 10.5&#176;C</div>
@@ -68,14 +67,26 @@
         </div>
     </div>
     <div class="busInfoFrame">
-        <img class="netzplan" src="Bus-Netzplan.png">
         <img class="buslogo" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Göttinger_Verkehrsbetriebe_logo.svg" height="60px">
+        <div class="container">
+            <div class="bus-container">
+                <div class="bus-Item">
+                    <div class="bus">
+                        <i class="fa fa-bus fa-5x"></i>
+                        <div class="line">71</div>
+                    </div>                    
+                </div>
+                <div class="bus-Item">
+                    <div class="bus">
+                        <i class="fa fa-bus fa-5x"></i>
+                        <div class="line">73</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" 
-    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
     <script src="script.js"></script>
+    <script src="moment-with-locales.js"></script>
 </body>
 </html>
