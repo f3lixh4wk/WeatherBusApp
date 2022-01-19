@@ -281,9 +281,9 @@ Elementen liegt*/
 }
 
 /*Get element with id="route"*/
-#route div + div
+#route span + div
 {
-    border-left: solid transparent 50px;
+    border-left: solid transparent 20px;
 }
 
 body

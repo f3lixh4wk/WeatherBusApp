@@ -71,6 +71,17 @@ function showWeatherData(data)
     weatherForecastElement.innerHTML = otherDayForcast;
 }
 
+function getBusData()
+{
+
+}
+
+function showBusData()
+{
+
+}
+
 //----------------------------------------------------------------------------------------------------------------------------
 setInterval(setTime, 1000);
 setInterval(getWeatherData(), 180000);
+setInterval(getBusData(), 60000);
