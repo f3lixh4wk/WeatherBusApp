@@ -60,7 +60,7 @@ function showWeatherData(data)
         {
             otherDayForcast += `
             <div class="weather-forecast-item">
-                <div class="day">${window.moment(day).locale('de').format('dddd')}</div>
+                <div class="day">${window.moment(day.dt*1000).locale('de').format('dddd')}</div>
                 <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather-icon" class="w-icon">
                 <div class="temp">${Math.round(day.temp.day)}&#176; / ${Math.round(day.temp.night)}&#176;</div>
             </div>

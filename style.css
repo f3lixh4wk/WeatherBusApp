@@ -194,13 +194,13 @@ Elementen liegt*/
 {
     padding-top: 60px;
     padding-left: 138px;
-    color: #fff;
 }
 
 .busInfoFrame .bus-container
 {
+    display: flex;
     background: rgba(99, 99, 99, 0.8);
-    padding: 25px;
+    padding: 20px;
     position: fixed;
     color: white;
     align-items: center;
@@ -210,13 +210,11 @@ Elementen liegt*/
 .busInfoFrame .bus-container .bus-Item
 {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 10px;
     border: 1px solid #eee;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 10px;
     background: rgba(0,0,0,0.2)
 }
 
@@ -237,6 +235,55 @@ Elementen liegt*/
 {
     font-weight: 400;
     font-size: 50px;
+}
+
+.busInfoFrame .bus-container .bus-Item .busStop
+{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    margin: 0 10px;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2)
+}
+
+.busInfoFrame .bus-container .bus-Item .busStop .stop
+{
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+    margin: 0 10px;
+    padding: 15px;
+    font-weight: 400;
+    font-size: 40px;
+}
+
+/*Get element with id="stop"*/
+#stop div + div
+{
+    border-left: solid transparent 145px;
+}
+
+.busInfoFrame .bus-container .bus-Item .busStop .route
+{
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+    margin: 0 10px;
+    padding: 15px;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+/*Get element with id="route"*/
+#route div + div
+{
+    border-left: solid transparent 50px;
 }
 
 body
