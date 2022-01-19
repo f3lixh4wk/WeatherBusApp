@@ -76,9 +76,16 @@ Elementen liegt*/
 
 .weatherInfoFrame .container
 {
+
     padding-top: 115px;
     padding-left: 138px;
     color: #fff;
+
+    position: relative;
+    padding: 90px 50px;
+    align-items: center;
+    color: white;
+
 }
 
 .weatherInfoFrame .future-forecast
@@ -120,6 +127,7 @@ Elementen liegt*/
 {
     font-size: 30px;
     padding-top: 15px;
+    text-align: center;
 }
 
 .future-forecast .weather-forecast
