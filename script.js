@@ -33,9 +33,10 @@ function getWeatherData()
 
         let{latitude, longitude} = success.coords;
 
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&lang=de&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res => res.json()).then(data =>{
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&lang=de&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
+        .then(res => res.json()).then(data =>{
 
-            console.log(data)
+            console.log(data);
             showWeatherData(data);
         })
     })
@@ -71,17 +72,36 @@ function showWeatherData(data)
     weatherForecastElement.innerHTML = otherDayForcast;
 }
 
-function getBusData()
-{
-
-}
-
 function showBusData()
 {
+    let firstStopTxt = "Göttingen, HAWK-Campus";
 
+    fetch('sendReceiveBusData.php', {
+        method: 'POST',
+        headers:{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: "stop=" + firstStopTxt
+    })
+
+    fetch('result.xml')
+    .then(response => response.text())
+    .then(text => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, "application/xml");
+        const stopPointElements = doc.getElementsByTagName("StopPointName"); 
+        const firstStopPointElementChilds = stopPointElements[0].childNodes;
+        const firstStopString = firstStopPointElementChilds[0].firstChild.nodeValue;
+        const firstStopWords = firstStopString.split("Göttingen "); 
+        const firstStopFirstElement = document.getElementById('firstStopFirst');
+        firstStopFirstElement.innerHTML = firstStopWords[1];
+
+        const firstServiceDepartureElements = doc.getElementsByTagName("ServiceDeparture");
+        const firstStopFirstDepatureString = firstServiceDepartureElements[0].firstChild.firstChild.nodeValue;
+        const firstStopFirstDepatureElement = document.getElementById('firstStopFirstTime');
+        firstStopFirstDepatureElement.innerHTML = firstStopFirstDepatureString;
+        })
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
+showBusData();
 setInterval(setTime, 1000);
 setInterval(getWeatherData(), 180000);
-setInterval(getBusData(), 60000);

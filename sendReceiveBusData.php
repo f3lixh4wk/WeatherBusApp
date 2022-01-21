@@ -1,4 +1,5 @@
 <?php
+$stop = $_POST['stop'];
 //The XML string that you want to send.
 $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Trias version="1.2" xmlns="http://www.vdv.de/trias" xmlns:ns6="trias" xmlns:ns5="http://datex2.eu/schema/1_0/1_0" xmlns:ns2="http://www.siri.org.uk/siri" xmlns:ns4="http://www.ifopt.org.uk/ifopt" xmlns:ns3="http://www.ifopt.org.uk/acsb">
@@ -9,7 +10,7 @@ $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
             <StopEventRequest>
                 <Location>
                     <LocationRef>
-                        <AddressRef>Göttingen, HAWK-Campus</AddressRef>
+                        <AddressRef>'. $stop .'</AddressRef>
                     </LocationRef>
                 </Location>
                 <Params>
@@ -48,13 +49,19 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 $result = curl_exec($curl);
 
 //Do some basic error checking.
-if(curl_errno($curl)){
+if(curl_errno($curl))
+{
     throw new Exception(curl_error($curl));
 }
 
 //Close the cURL handle.
 curl_close($curl);
 
-//Print out the response output.
-echo $result;
+$dom = new DOMDocument;
+$dom->preserveWhiteSpace = FALSE;
+$dom->loadXML($result);
+
+$dom->save('result.xml');
+
+echo $stop;
 ?>

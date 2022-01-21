@@ -76,16 +76,9 @@ Elementen liegt*/
 
 .weatherInfoFrame .container
 {
-
     padding-top: 115px;
-    padding-left: 138px;
+    padding-left: 120px;
     color: #fff;
-
-    position: relative;
-    padding: 90px 50px;
-    align-items: center;
-    color: white;
-
 }
 
 .weatherInfoFrame .future-forecast
@@ -267,7 +260,7 @@ Elementen liegt*/
     margin: 0 10px;
     padding: 15px;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 /*Get element with id="stop"*/
@@ -285,7 +278,7 @@ Elementen liegt*/
     margin: 0 10px;
     padding: 15px;
     font-weight: 400;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 /*Get element with id="route"*/
