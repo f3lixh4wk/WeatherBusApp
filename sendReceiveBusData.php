@@ -1,5 +1,7 @@
 <?php
-$stop = $_POST['stop'];
+$stopPointRef = $_POST['stop'];
+$deppArrTime = $_POST['time'];
+$fileName = $_POST['fileName'];
 //The XML string that you want to send.
 $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Trias version="1.2" xmlns="http://www.vdv.de/trias" xmlns:ns6="trias" xmlns:ns5="http://datex2.eu/schema/1_0/1_0" xmlns:ns2="http://www.siri.org.uk/siri" xmlns:ns4="http://www.ifopt.org.uk/ifopt" xmlns:ns3="http://www.ifopt.org.uk/acsb">
@@ -10,8 +12,9 @@ $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
             <StopEventRequest>
                 <Location>
                     <LocationRef>
-                        <AddressRef>'. $stop .'</AddressRef>
+                        <StopPointRef>'. $stopPointRef .'</StopPointRef>
                     </LocationRef>
+                    <DepArrTime>'. $deppArrTime .'</DepArrTime>
                 </Location>
                 <Params>
                     <NumberOfResults>2</NumberOfResults>
@@ -61,7 +64,7 @@ $dom = new DOMDocument;
 $dom->preserveWhiteSpace = FALSE;
 $dom->loadXML($result);
 
-$dom->save('result.xml');
+$dom->save($fileName);
 
 echo $stop;
 ?>

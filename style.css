@@ -194,7 +194,8 @@ Elementen liegt*/
 .busInfoFrame .container
 {
     padding-top: 60px;
-    padding-left: 138px;
+    padding-left: 250px;
+    color: transparent;
 }
 
 .busInfoFrame .bus-container

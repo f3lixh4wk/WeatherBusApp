@@ -72,36 +72,84 @@ function showWeatherData(data)
     weatherForecastElement.innerHTML = otherDayForcast;
 }
 
-function showBusData()
+function showBusData(stopPointRef, currentDateTimeStr, element, fileName)
 {
-    let firstStopTxt = "Göttingen, HAWK-Campus";
-
     fetch('sendReceiveBusData.php', {
         method: 'POST',
         headers:{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-        body: "stop=" + firstStopTxt
+        body: `stop=${stopPointRef}&time=${currentDateTimeStr}&fileName=${fileName}`
     })
 
-    fetch('result.xml')
+    fetch(fileName)
     .then(response => response.text())
     .then(text => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, "application/xml");
-        const stopPointElements = doc.getElementsByTagName("StopPointName"); 
-        const firstStopPointElementChilds = stopPointElements[0].childNodes;
-        const firstStopString = firstStopPointElementChilds[0].firstChild.nodeValue;
-        const firstStopWords = firstStopString.split("Göttingen "); 
-        const firstStopFirstElement = document.getElementById('firstStopFirst');
-        firstStopFirstElement.innerHTML = firstStopWords[1];
+        
+        // Lines TODO in Funktion auslagern
+        const publishedLineNameElements = doc.getElementsByTagName("PublishedLineName");
+        var lineElementChilds = publishedLineNameElements[0].childNodes; // Der Array Zugriff hängt von der Anzahl der abgefragten Ergebnisse ab!
+        var line = lineElementChilds[0].firstChild.nodeValue;
+        var lineElement = document.getElementById(element.concat('LineFirst'));
+        lineElement.innerHTML = line;
 
-        const firstServiceDepartureElements = doc.getElementsByTagName("ServiceDeparture");
-        const firstStopFirstDepatureString = firstServiceDepartureElements[0].firstChild.firstChild.nodeValue;
-        const firstStopFirstDepatureElement = document.getElementById('firstStopFirstTime');
-        firstStopFirstDepatureElement.innerHTML = firstStopFirstDepatureString;
+        lineElementChilds = publishedLineNameElements[1].childNodes;
+        line = lineElementChilds[0].firstChild.nodeValue;
+        lineElement = document.getElementById(element.concat('LineSecond'));
+        lineElement.innerHTML = line;
+
+        // Stops TODO in Funktion auslagern
+        const stopPointElements = doc.getElementsByTagName("StopPointName"); 
+        var stopPointElementChilds = stopPointElements[0].childNodes;
+        var stopString = stopPointElementChilds[0].firstChild.nodeValue;
+        var stopWords = stopString.split("Göttingen "); 
+        var stopElement = document.getElementById(element.concat('StopFirst'));
+        stopElement.innerHTML = stopWords[1];
+
+        stopPointElementChilds = stopPointElements[1].childNodes;
+        stopString = stopPointElementChilds[0].firstChild.nodeValue;
+        stopWords = stopString.split("Göttingen "); 
+        stopElement = document.getElementById(element.concat('StopSecond'));
+        stopElement.innerHTML = stopWords[1];
+
+        // Depature Times TODO in Funktion auslagern
+        const serviceDepartureElements = doc.getElementsByTagName("ServiceDeparture");
+        var depatureString = serviceDepartureElements[0].firstChild.firstChild.nodeValue;
+        var depatureWords = depatureString.split('T');
+        var depatureTimeString = depatureWords[1];
+        var depatureShortTimeWords = depatureTimeString.split(":00Z"); 
+        var depatureElement = document.getElementById(element.concat('StopFirstTime'));
+        depatureElement.innerHTML = depatureShortTimeWords[0];
+
+        var depatureString = serviceDepartureElements[1].firstChild.firstChild.nodeValue;
+        depatureWords = depatureString.split('T');
+        depatureTimeString = depatureWords[1];
+        depatureShortTimeWords = depatureTimeString.split(":00Z"); 
+        depatureElement = document.getElementById(element.concat('StopSecondTime'));
+        depatureElement.innerHTML = depatureShortTimeWords[0];
+
+        // Destinations TODO in Funktion auslagern
+        const destinationElements = doc.getElementsByTagName("DestinationText");
+        var destinationElementChilds = destinationElements[0].childNodes;
+        var destination = destinationElementChilds[0].firstChild.nodeValue;
+        var destinationElement = document.getElementById(element.concat('DestinationFirst'));
+        destinationElement.innerHTML = destination;
+
+        destinationElementChilds = destinationElements[1].childNodes;
+        destination = destinationElementChilds[0].firstChild.nodeValue;
+        destinationElement = document.getElementById(element.concat('DestinationSecond'));
+        destinationElement.innerHTML = destination;
         })
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
-showBusData();
+
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTimeString = date.toString() + "T" + time.toString() + "Z";
+
+showBusData("de:03152:33884::2", dateTimeString, "first", "hawk.xml"); // HAWK-Campus
+showBusData("de:03152:33822::2", dateTimeString, "second", "alva.xml"); // Alva Myrdal Weg
+getWeatherData();
 setInterval(setTime, 1000);
-setInterval(getWeatherData(), 180000);
