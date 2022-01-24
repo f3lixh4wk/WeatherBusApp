@@ -21,7 +21,7 @@ $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                     <StopEventType>departure</StopEventType>
                     <IncludePreviousCalls>false</IncludePreviousCalls>
                     <IncludeOnwardCalls>false</IncludeOnwardCalls>
-                    <IncludeRealtimeData>true</IncludeRealtimeData>
+                    <AlgorithmType>minChanges</AlgorithmType>
                 </Params>
             </StopEventRequest>
         </RequestPayload>

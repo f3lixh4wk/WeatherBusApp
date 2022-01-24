@@ -149,7 +149,7 @@ var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 var dateTimeString = date.toString() + "T" + time.toString() + "Z";
 
-showBusData("de:03152:33884::2", dateTimeString, "first", "hawk.xml"); // HAWK-Campus
-showBusData("de:03152:33822::2", dateTimeString, "second", "alva.xml"); // Alva Myrdal Weg
+showBusData("de:03152:33884", dateTimeString, "first", "hawk.xml"); // HAWK-Campus
+showBusData("de:03152:33822", dateTimeString, "second", "alva.xml"); // Alva Myrdal Weg
 getWeatherData();
 setInterval(setTime, 1000);
