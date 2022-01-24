@@ -77,7 +77,7 @@ Elementen liegt*/
 .weatherInfoFrame .container
 {
     padding-top: 115px;
-    padding-left: 120px;
+    padding-left: 130px;
     color: #fff;
 }
 
@@ -103,7 +103,8 @@ Elementen liegt*/
     margin: 0 100px;
     padding-right: 40px;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.37)
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid #fc5a41f1;
     
 }
 
@@ -194,8 +195,9 @@ Elementen liegt*/
 .busInfoFrame .container
 {
     padding-top: 60px;
-    padding-left: 250px;
+    padding-left: 130px;
     color: transparent;
+    
 }
 
 .busInfoFrame .bus-container
@@ -205,19 +207,21 @@ Elementen liegt*/
     padding: 20px;
     position: fixed;
     color: white;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
+    border: 3px solid #fc5a41f1;
 }
 
 .busInfoFrame .bus-container .bus-Item
 {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 10px;
+    align-items: left;
+    justify-content: left;
+    margin: 0 40px;
     border: 1px solid #eee;
     padding: 10px;
-    background: rgba(0,0,0,0.2)
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
 }
 
 .busInfoFrame .bus-container .bus-Item .bus
@@ -230,26 +234,31 @@ Elementen liegt*/
     border: 1px solid #eee;
     padding: 15px;
     border-radius: 10px;
-    background: rgba(0,0,0,0.2)
+    background: rgba(0,0,0,0.2);
+    
 }
 
 .busInfoFrame .bus-container .bus-Item .bus .line
 {
     font-weight: 400;
     font-size: 50px;
+    
 }
 
 .busInfoFrame .bus-container .bus-Item .busStop
 {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: left;
+    align-items: center;
+    justify-content: center;
+    min-width: 520px;
     margin: 0 10px;
-    border: 1px solid #eee;
     padding: 15px;
-    border-radius: 10px;
-    background: rgba(0,0,0,0.2)
+    border: 1px solid #eee;
+    background: #3C3C44;
+    border-radius: 50px;
+   
+    
 }
 
 .busInfoFrame .bus-container .bus-Item .busStop .stop
@@ -262,6 +271,8 @@ Elementen liegt*/
     padding: 15px;
     font-weight: 400;
     font-size: 30px;
+    
+    
 }
 
 /*Get element with id="stop"*/
