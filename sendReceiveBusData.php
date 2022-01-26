@@ -29,26 +29,25 @@ $xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </Trias>';
 
 
-//The URL that you want to send your XML to.
+//Die URL an die wir unser XML senden wollen.
 $url = 'https://v3-api.efa.de';
 
-//Initiate cURL
+//Initialisiere cURL
 $curl = curl_init($url);
 
-//Set the Content-Type to text/xml.
+//Setze den Content-Type zu text/xml.
 curl_setopt ($curl, CURLOPT_HTTPHEADER, array("Content-Type: text/xml"));
 
-//Set CURLOPT_POST to true to send a POST request.
+//POST request auf true setzen.
 curl_setopt($curl, CURLOPT_POST, true);
 
-//Attach the XML string to the body of our request.
+//Den XML String an den Body des Request hängen.
 curl_setopt($curl, CURLOPT_POSTFIELDS, $xml);
 
-//Tell cURL that we want the response to be returned as
-//a string instead of being dumped to the output.
+//Wir möchten die Respone als String zurück haben.
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-//Execute the POST request and send our XML.
+//Ausführen des POST und sende des XML Strings.
 $result = curl_exec($curl);
 
 //Do some basic error checking.
@@ -57,7 +56,7 @@ if(curl_errno($curl))
     throw new Exception(curl_error($curl));
 }
 
-//Close the cURL handle.
+//Den cUrl Handle schließen.
 curl_close($curl);
 
 $dom = new DOMDocument;
@@ -65,6 +64,4 @@ $dom->preserveWhiteSpace = FALSE;
 $dom->loadXML($result);
 
 $dom->save($fileName);
-
-echo $stop;
 ?>

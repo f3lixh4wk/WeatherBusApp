@@ -74,11 +74,11 @@ function showWeatherData(data)
 
 function showBusData(stopPointRef, currentDateTimeStr, element, fileName)
 {
-    fetch('sendReceiveBusData.php', {
+    console.log(    fetch('sendReceiveBusData.php', {
         method: 'POST',
         headers:{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
         body: `stop=${stopPointRef}&time=${currentDateTimeStr}&fileName=${fileName}`
-    })
+    }));
 
     fetch(fileName)
     .then(response => response.text())
